@@ -5,7 +5,7 @@ var listContainer = document.querySelector("#listContainer")
 
 //Variables needed for Spotify API
 const clientID = 'f0956f3b8a6d41f28174c3145226555f';
-const clientSecret = 'f437039b0ecf433d94808485272815a8';
+const clientSecret = '';
 const redirectURI = 'https://reginaldcapanzana.github.io/musician-finder';
 
 //Spotify API Token
