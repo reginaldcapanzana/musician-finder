@@ -1,7 +1,7 @@
 var button = document.querySelector('#btn')
 var bandName = document.querySelector('#bandName');
-//var userUrl = document.createElement('p');
 var bandPic = document.querySelector('#bandPic')
+var listContainer = document.querySelector("#listContainer")
 
 //Variables needed for Spotify API
 const clientID = 'f0956f3b8a6d41f28174c3145226555f';
@@ -17,6 +17,9 @@ const spotifyAPIController = (function(){
 })();
 
 button.addEventListener("click", function() {
+    // bandName.textContent = ""
+    // bandPic.setAttribute('src', "")
+    listContainer.innerHTML = ""
     var searchVal = document.querySelector('#search').value;
     // console.log(searchVal)
     var requestUrl = "https://rest.bandsintown.com/artists/" + searchVal + "?app_id=3cc6769e7ff614003f89926a784e3cd0"
@@ -29,15 +32,18 @@ button.addEventListener("click", function() {
             bandName.textContent = data.name;
             bandPic.setAttribute('src', data.image_url)
         });
-
-    //Top Songs Spotify API
-    var topSongsURL = "https://api.spotify.com/v1/artists/" + searchVal + "/top-tracks";
-    fetch(topSongsURL)
-        .then(function(response){
+        var eventsUrl = "https://rest.bandsintown.com/artists/" + searchVal + "/events?app_id=3cc6769e7ff614003f89926a784e3cd0&date=upcoming"
+    fetch(eventsUrl)
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data){
+        .then(function (data) {
             console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var tourInfo = document.createElement('li');
+                var tourDate = data[i].datetime.slice(0, 10)
+                tourInfo.textContent = data[i].venue.location + " at " + data[i].venue.name + ". Date: " + tourDate
+                listContainer.append(tourInfo)
+            }
         })
-
     })
