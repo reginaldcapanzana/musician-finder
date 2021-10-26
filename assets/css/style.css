@@ -4,6 +4,10 @@
   img {
     border-radius: 50%;
   }
+  h1.bandName,
+  h1.display{
+      font-size: 2em;
+  }
   /* Create three equal columns that floats next to each other */
   .column {
     float: left;
