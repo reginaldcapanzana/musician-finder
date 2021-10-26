@@ -1,7 +1,7 @@
 var button = document.querySelector('#btn')
 var bandName = document.querySelector('#bandName');
 var bandPic = document.querySelector('#bandPic')
-var listContainer = document.querySelector("#listContainer")
+var upcomingShows = document.querySelector("#upcomingShows")
 
 button.addEventListener("click", function() {
     bandName.textContent = ""
@@ -18,7 +18,7 @@ button.addEventListener("click", function() {
             // console.log(data)
             if (Object.keys(data).length == 0) {
                 bandName.textContent = "Artist not found"
-                bandPic.setAttribute('src', "")
+                bandPic.setAttribute('src', "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2019/12/03202400/Yellow-Labrador-Retriever.jpg")
                 return 
             }
             else {
