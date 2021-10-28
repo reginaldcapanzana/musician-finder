@@ -4,20 +4,33 @@
   img {
     border-radius: 50%;
   }
-  h1.bandName,
+  h1.bandName{
+    font-size: 2.5em;
+  }
   h1.display{
-      font-size: 2em;
+    font-size: 3em;
+    margin-right: 20px;
+  }
+  .jumbotron{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    padding: 20px;
+  }
+  .artist-display{
+    padding-left: 20px;
   }
   .events{
-    width: 200px;
-    height: 100px;
-    background: lightgray;
+    background: rgb(27, 27, 27);
     position: absolute;
     top: 175px;
-    right: 0;
+    right: 20px;
     width: 700px;
-    height: 200px;
+    height: 400px;
     border: 3px solid black;
+    color: white;
+    overflow-y: scroll;
+    padding: 10px;
   }
   /* Create three equal columns that floats next to each other */
   .column {

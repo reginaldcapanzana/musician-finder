@@ -8,6 +8,9 @@ button.addEventListener("click", function() {
     bandPic.setAttribute('src', "")
     upcomingShows.innerHTML = ""
     var searchVal = document.querySelector('#search').value
+
+    var testUrl = "https://genius.p.rapidapi.com/artists/16775/songs"
+
     var requestUrl = "https://rest.bandsintown.com/artists/" + searchVal + "?app_id=3cc6769e7ff614003f89926a784e3cd0"
     
     fetch(requestUrl)
@@ -18,7 +21,7 @@ button.addEventListener("click", function() {
             // console.log(data)
             if (Object.keys(data).length == 0) {
                 bandName.textContent = "Artist not found"
-                bandPic.setAttribute('src', "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2019/12/03202400/Yellow-Labrador-Retriever.jpg")
+                bandPic.setAttribute('src', "https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-404.png")
                 return 
             }
             else {

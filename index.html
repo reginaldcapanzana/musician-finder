@@ -7,8 +7,8 @@
 
     <!--link href="font link here" rel="stylesheet"-->
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
-    <link rel="stylesheet" href="/assets/css/reset.css"/>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Musican Finder</title>
     <!--link google fonts here-->
     <style>
@@ -30,39 +30,41 @@
       <p class="lead">A great location to discover any artist information...</p>
       <br>
        <!--Add Calender present Date -->
-      <p id="note" class="lead"> Top Artists Search Bar</p>
     </header>
-    <div class="container">
+    <div class="artist-display">
       <!--Add search bar-->
-      <input id='search' type='text' placeholder="find a band">
+      <!-- <p id="note" class="lead"> Top Artists Search Bar</p> -->
+      <input id='search' type='text' placeholder="Find an artist">
       <button id="btn">search</button>
       <h1 class="bandName" id="bandName"></h1>
-    <div>
+        <div class="row">
+          <div class="imagine">
+            <!-- <a href="http://via.placeholder.com/900x500/2ecc71/ffffff/&amp;text=Image+1" title="View Larger Image" class="block green bandPic"> -->
+              <img src="https://designshack.net/wp-content/uploads/placeholder-image.png" alt="Image 1" style="width:400px; height: 400px" id="bandPic">
+            <!-- </a> -->
+          </div>
+        </div>
+    </div>
     <br>
     <!--add image section-->
-    <div class="row">
-       <div class="imagine">
-           <a href="http://via.placeholder.com/900x500/2ecc71/ffffff/&amp;text=Image+1" title="View Larger Image" class="block green">
-             <img src="http://via.placeholder.com/300x300/2ecc71/ffffff/&amp;text=Image+1" alt="Image 1" style="width:400px" id="bandPic">
-           </a>
-       </div>
-    </div>
+    
     <br><br>
     <!--Upcomiong Events-->
-      <div class="events" id=upcomingShows>
+      <div class="events" >
         <h2>Upcoming Events</h2>
+        <div id=upcomingShows></div>
       </div>
     <!--Top songs row for songs, lyrics, and guitartabs-->
     <div class="row">
       <div class="column" style="background-color: rgb(233, 233, 233);">
         <h2>Songs</h2>
-        <p>Some text...</p>
+        <p></p>
         </div>
       <div class="column" style="background-color:whitesmoke;">
         <h2>Lyrics</h2>
-        <p>Some text...</p>
+        <p></p>
       </div>
     </div>
-    <script type="text/javascript" src="assets/js/script.js" ></script>
+    <script type="text/javascript" src="./assets/js/script.js" ></script>
   </body>
 </html>
