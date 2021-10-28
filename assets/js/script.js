@@ -2,19 +2,31 @@ var button = document.querySelector('#btn')
 var bandName = document.querySelector('#bandName');
 var bandPic = document.querySelector('#bandPic')
 var upcomingShows = document.querySelector("#upcomingShows")
+var topSongs = document.querySelector("#top-songs")
+var lyrics = document.querySelector("#lyrics")
 
-//Variables needed for Spotify API
-const clientID = '';
-const clientSecret = '';
-const redirectURI = 'https://reginaldcapanzana.github.io/musician-finder';
+//LastFm API info
+var lastFmRootURL = "http://ws.audioscrobbler.com/2.0/"
+var lastFmAPIKey = "&api_key=6afc7c7f27dfe14e777df51baef17e8f&format=json"
 
-//Spotify API Token
-// Will run on start up. Need Token before accessing anything from the SpotifyAPI
-const spotifyAPIController = (function(){
-    const getToken = async () => {
-        const result = await fetch('https://accounts.spotify.com')
-    }
-})();
+function searchAndGenerateTopSongs(artist){
+    //Grabs top 5 songs of the artist
+    var topSongsURL = 
+        lastFmRootURL + 
+        "?method=artist.gettoptracks&artist=" +
+        artist +
+        "&limit=5"+
+        lastFmAPIKey;
+
+    fetch(topSongsURL)
+        .then(function(response){
+            return response.json()
+        })
+        .then(function(data){
+            console.log(data)
+        })
+}
+
 
 button.addEventListener("click", function() {
     bandName.textContent = ""
@@ -68,4 +80,7 @@ button.addEventListener("click", function() {
                 })
             }
         })
+    
+    //Call top songs function
+    searchAndGenerateTopSongs(searchVal)
 })
