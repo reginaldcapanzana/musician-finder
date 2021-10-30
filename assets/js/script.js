@@ -6,7 +6,7 @@ var topSongs = document.querySelector("#top-songs")
 var topAlbums = document.querySelector("#top-albums")
 var pastSearches = document.querySelector("#previous-searches");
 var pastButtons = [];
-var clearBtn = document.querySelector('#clearBtn')
+var clearBtn = document.querySelector('#clear-btn')
 
 //LastFm API info
 var lastFmRootURL = "http://ws.audioscrobbler.com/2.0/"
