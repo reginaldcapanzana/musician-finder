@@ -1,16 +1,105 @@
-var button = document.querySelector('#btn')
+var searchButton = document.querySelector('#search-btn')
 var bandName = document.querySelector('#bandName');
 var bandPic = document.querySelector('#bandPic')
 var upcomingShows = document.querySelector("#upcomingShows")
 var topSongs = document.querySelector("#top-songs")
 var topAlbums = document.querySelector("#top-albums")
+var pastSearches = document.querySelector("#previous-searches");
+var pastButtons = [];
+var clearBtn = document.querySelector('#clearBtn')
 
 //LastFm API info
 var lastFmRootURL = "http://ws.audioscrobbler.com/2.0/"
 var lastFmAPIKey = "&api_key=6afc7c7f27dfe14e777df51baef17e8f&format=json"
 
-//TODO: Need to add function that clears topSongs and topAlbums divs
+clearBtn.addEventListener("click", function() {
+    bandName.textContent = ""
+    bandPic.setAttribute('src', "https://designshack.net/wp-content/uploads/placeholder-image.png")
+    upcomingShows.innerHTML = ""
+    document.querySelector('#search').value = ""
+    pastSearches.innerHTML = ""
+    localStorage.removeItem('previousBands');
+    topSongs.innerHTML = ""
+    topAlbums.innerHTML = ""
+})
+
+searchButton.addEventListener("click", handleFormSubmit)
+
+function handleFormSubmit(event){
+    var searchVal = document.querySelector('#search').value
+    if (!searchVal){
+        return
+    }
+    event.preventDefault();
+    searchBands(searchVal);
+    // searchVal= ""
+}
+
+function searchBands(search){
+    bandName.textContent = ""
+    bandPic.setAttribute('src', "")
+    upcomingShows.innerHTML = ""
+    topSongs.innerHTML = ""
+    topAlbums.innerHTML = ""
+    // var searchVal = document.querySelector('#search').value
+
+    var requestUrl = "https://rest.bandsintown.com/artists/" + search + "?app_id=3cc6769e7ff614003f89926a784e3cd0"
+    
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            //console.log(data)
+            if (Object.keys(data).length == 0) {
+                bandName.textContent = "Artist not found"
+                bandPic.setAttribute('src', "https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-404.png")
+                return 
+            }
+            else {
+                bandName.textContent = data.name
+                bandPic.setAttribute('src', data.image_url)
+                
+                var eventsUrl = "https://rest.bandsintown.com/artists/" + search + "/events?app_id=3cc6769e7ff614003f89926a784e3cd0&date=upcoming"
+                fetch(eventsUrl)
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (data) {
+                console.log(data)
+                if (Object.keys(data).length == 0) {
+                        var noTourInfo = document.createElement('p')
+                        noTourInfo.textContent = 'No upcoming shows!'
+                        upcomingShows.append(noTourInfo)
+                        return
+                    }
+                else {
+                    for (var i = 0; i < data.length; i++) {
+                        var tourInfo = document.createElement('p')
+                        var tourDate = data[i].datetime.slice(0, 10)
+                        tourInfo.textContent = data[i].venue.location + " at " + data[i].venue.name + ". Date: " + tourDate + " "
+                        
+                        var ticketPlaceholder = document.createElement('a')
+                        var linkText = document.createTextNode("Get tickets!")
+                        ticketPlaceholder.appendChild(linkText)
+                        ticketPlaceholder.href = data[i].url
+                        
+                        upcomingShows.append(tourInfo)
+                        tourInfo.append(ticketPlaceholder)
+                    }}
+                })
+                //Call top songs and top album function
+                searchAndGenerateTopSongs(search)
+                searchAndGenerateTopAlbums(search)
+                addToButtonList(search)
+            }
+        })
+    
+    
+}
+
 function searchAndGenerateTopSongs(artist){
+    // topSongs.innerHTML = ""
     //Grabs top 5 songs of the artist
     var topSongsURL = 
         lastFmRootURL + 
@@ -43,6 +132,7 @@ function searchAndGenerateTopSongs(artist){
 }
 
 function searchAndGenerateTopAlbums(artist){
+    // topAlbums.innerHTML = ""
     //Grabs top 5 albums of the artist
     var topAlbumsURL = 
         lastFmRootURL + 
@@ -75,65 +165,47 @@ function searchAndGenerateTopAlbums(artist){
         })
 }
 
+function addToButtonList(search){
+    if(pastButtons.indexOf(search) !== -1){
+        return
+    }
+    pastButtons.push(search);
+    localStorage.setItem("previousBands", JSON.stringify(pastButtons));
+    makeButtons()
+}
 
+function checkButtons() {
+    var pastSearchButtons = localStorage.getItem("previousBands");
+    if (pastSearchButtons) {
+      pastButtons = JSON.parse(pastSearchButtons);
+    }
+    makeButtons();
+  }
 
-button.addEventListener("click", function() {
-    bandName.textContent = ""
-    bandPic.setAttribute('src', "")
-    upcomingShows.innerHTML = ""
-    var searchVal = document.querySelector('#search').value
-
-    var testUrl = "https://genius.p.rapidapi.com/artists/16775/songs"
-
-    var requestUrl = "https://rest.bandsintown.com/artists/" + searchVal + "?app_id=3cc6769e7ff614003f89926a784e3cd0"
+checkButtons()
     
-    fetch(requestUrl)
-        .then(function (response) {
-            return response.json()
-        })
-        .then(function (data) {
-            //console.log(data)
-            if (Object.keys(data).length == 0) {
-                bandName.textContent = "Artist not found"
-                bandPic.setAttribute('src', "https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-404.png")
-                return 
-            }
-            else {
-                bandName.textContent = data.name
-                bandPic.setAttribute('src', data.image_url)
-                
-                var eventsUrl = "https://rest.bandsintown.com/artists/" + searchVal + "/events?app_id=3cc6769e7ff614003f89926a784e3cd0&date=upcoming"
-                fetch(eventsUrl)
-                .then(function (response) {
-                    return response.json()
-                })
-                .then(function (data) {
-                console.log(data)
-                if (Object.keys(data).length == 0) {
-                        var noTourInfo = document.createElement('p')
-                        noTourInfo.textContent = 'No upcoming shows!'
-                        upcomingShows.append(noTourInfo)
-                        return
-                    }
-                else {
-                    for (var i = 0; i < data.length; i++) {
-                        var tourInfo = document.createElement('p')
-                        var tourDate = data[i].datetime.slice(0, 10)
-                        tourInfo.textContent = data[i].venue.location + " at " + data[i].venue.name + ". Date: " + tourDate + " "
-                        
-                        var ticketPlaceholder = document.createElement('a')
-                        var linkText = document.createTextNode("Get tickets!")
-                        ticketPlaceholder.appendChild(linkText)
-                        ticketPlaceholder.href = data[i].url
-                        
-                        upcomingShows.append(tourInfo)
-                        tourInfo.append(ticketPlaceholder)
-                    }}
-                })
-            }
-        })
+function makeButtons() {
+    pastSearches.innerHTML = ""
     
-    //Call top songs and top album function
-    searchAndGenerateTopSongs(searchVal)
-    searchAndGenerateTopAlbums(searchVal)
-})
+    for (var i = 0; i < pastButtons.length; i++) {
+        const band = pastButtons[i];
+        var newBtn = document.createElement("button");
+
+        newBtn.textContent = band;
+        newBtn.setAttribute('type', 'button');
+        newBtn.setAttribute("data-value", band);
+        newBtn.setAttribute('class', 'btnPast');
+        pastSearches.append(newBtn);
+    }
+}        
+
+function pastSearchBtn(event){
+    if(!event.target.matches('.btnPast')){
+        return
+    }
+    document.querySelector('#search').value = ""
+    var btn = event.target;
+    var search= btn.getAttribute('data-value')
+    searchBands(search);
+}
+pastSearches.addEventListener('click', pastSearchBtn);
