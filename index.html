@@ -14,7 +14,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans&display=swap');
         body{
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'DM Sans', sans-serif; 
         }
         h1{
           font-family: 'Bebas Neue', cursive;
@@ -22,12 +22,17 @@
     </style>
   </head>
 
-  <body>
+  <body style="background-color: rgb(11, 49, 66);">
     <!--Personal note: jumbotron for displpay to look bigger -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <header class="jumbotron">
+<<<<<<< HEAD
       <h1 class="display">Musician Finder</h1>
       <p class="lead">Find info on all your favorite musicians</p>
+=======
+      <h1 class="display" >Musician Finder</h1>
+      <p class="lead">A great location to discover any artist information...</p>
+>>>>>>> a38086145701236285fd4248cefdf353a2c1b24a
       <br>
        <!--Add Calender present Date -->
     </header>
@@ -39,7 +44,7 @@
       <button id="clearBtn">Clear</button>
         <div id="previous-searches"></div>
       <h1 class="bandName" id="bandName"></h1>
-        <div class="row">
+        <div class="row" style="background-color: rgb(15, 82, 87);">
           <div class="imagine">
             <!-- <a href="http://via.placeholder.com/900x500/2ecc71/ffffff/&amp;text=Image+1" title="View Larger Image" class="block green bandPic"> -->
               <img src="https://designshack.net/wp-content/uploads/placeholder-image.png" alt="Image 1" style="width:400px; height: 400px" id="bandPic">
@@ -52,19 +57,19 @@
     
     <br><br>
     <!--Upcomiong Events-->
-      <div class="events" >
+      <div class="events">
         <h2>Upcoming Events</h2>
         <div id=upcomingShows></div>
       </div>
     <!--Top songs row for songs, lyrics, and guitartabs-->
     <div class="row">
-      <div class="column" style="background-color: rgb(233, 233, 233);" >
-        <h2>Top Songs</h2>
-        <div id="top-songs"></div>
+      <div class="column" style="background-color: rgb(15, 82, 87);">
+        <h2>Songs</h2>
+        <p></p>
         </div>
-      <div class="column" style="background-color:whitesmoke;" >
-        <h2>Top Albums</h2>
-        <div id="top-albums"></div>
+      <div class="column" style="background-color:rgb(15, 82, 87);">
+        <h2>Lyrics</h2>
+        <p></p>
       </div>
     </div>
     <script type="text/javascript" src="./assets/js/script.js" ></script>
