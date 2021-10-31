@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
   }
+
   img {
     border-radius: 50%;
     display: block;
@@ -8,6 +9,11 @@
     width: 100%;
     max-width: 400px;
     height: auto;
+  }
+
+  h2{
+    font-size: larger;
+    color: #a7c6da;
   }
 
   .pure-g{
@@ -25,7 +31,7 @@
 
   .custom-row-small{
     height: 100%;
-    min-height: 130px;
+    min-height: 150px;
     width: auto;
     background-color: rgb(15, 82, 87);
   }
@@ -42,7 +48,7 @@
   }
 
   h2.bandName{
-    font-size: large;
+    /* font-size: large; */
     margin-bottom: 10px;
     margin-top: 10px;
     text-align: center;
@@ -50,7 +56,10 @@
   }
   .title{
     font-size: 50px;
-    color: #a7c6da
+  }
+
+  .title-smaller{
+    font-size: 30px;
   }
 
   .title-list{
@@ -62,8 +71,8 @@
     margin-bottom: 0;
   }
 
-  h2.title{
-    font-size: large;
+  h2.title-smaller{
+    /* font-size: large; */
     margin-bottom: 10px;
     margin-top: 10px;
   }
