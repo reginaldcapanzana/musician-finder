@@ -1,72 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--link href="font link here" rel="stylesheet"-->
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"/>
-    <link rel="stylesheet" href="./assets/css/reset.css"/>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Musican Finder</title>
-    <!--link google fonts here-->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans&display=swap');
-        body{
-          font-family: 'DM Sans', sans-serif; 
-        }
-        h1{
-          font-family: 'Bebas Neue', cursive;
-        }
-    </style>
-  </head>
 
-  <body style="background-color: rgb(11, 49, 66);">
-    <!--Personal note: jumbotron for display to look bigger -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <header class="jumbotron">
-      <h1 class="title" >Musician Finder</h1>
-      <p class="lead">A great location to discover any artist information...</p>
-      <br>
-       <!--Add Calender present Date -->
-    </header>
-    <div class="artist-display">
-      <!--Add search bar-->
-      <!-- <p id="note" class="lead"> Top Artists Search Bar</p> -->
-      <input id='search' type='text' placeholder="Find an artist">
-      <button id="search-btn">Search</button>
-      <button id="clearBtn">Clear</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Musican Finder</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans&display=swap');
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    h1, h2 {
+      font-family: 'Bebas Neue', cursive;
+    }
+  </style>
+</head>
+
+<body style="background-color: rgb(11, 49, 66);">
+  <header class="pure-g jumbotron">
+    <div class="pure-u-1">
+      <div class="pure-menu title-list">
+        <h1 class="title">Musician Finder</h1>
+        <p>A great location to discover any artist information</p>
+    </div>
+    <div class="pure-u-1">
+      <div class="pure-menu pure-menu-horizontal artist-search-bar">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item pure-menu-selected" id="search-input">
+            <form class="pure-form">
+              <fieldset>
+                <input type="text" placeholder="Find an artist" id="search" />
+                <button id="search-btn" class="pure-button custom-button">Search</button>
+                <button id="clear-btn" class="pure-button custom-button">Clear</button>
+              </fieldset>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pure-u-1">
+      <div class="pure-menu artist-search-bar">
+        <h2>Previous Searches</h2>
         <div id="previous-searches"></div>
-      <h1 class="bandName" id="bandName"></h1>
-        <div class="row" style="background-color: rgb(15, 82, 87);">
-          <div class="imagine">
-            <!-- <a href="http://via.placeholder.com/900x500/2ecc71/ffffff/&amp;text=Image+1" title="View Larger Image" class="block green bandPic"> -->
-              <img src="https://designshack.net/wp-content/uploads/placeholder-image.png" alt="Image 1" style="width:400px; height: 400px" id="bandPic">
-            <!-- </a> -->
-          </div>
-        </div>
-    </div>
-    <br>
-    <!--add image section-->
-    
-    <br><br>
-    <!--Upcomiong Events-->
-      <div class="events">
-        <h2>Upcoming Events</h2>
-        <div id=upcomingShows></div>
-      </div>
-    <!--Top songs row for songs, lyrics, and guitartabs-->
-    <div class="row">
-      <div class="column" style="background-color: rgb(15, 82, 87);">
-        <h2 class="title">Top Songs</h2>
-        <div id="top-songs"></div>
-        </div>
-      <div class="column" style="background-color:rgb(15, 82, 87);">
-        <h2 class="title">Top Albums</h2>
-        <div id="top-albums"></div>
       </div>
     </div>
-    <script type="text/javascript" src="./assets/js/script.js" ></script>
-  </body>
+  </header>
+
+  <div class="pure-g custom-row" style="visibility: hidden;" id="bigRow">
+    <div class="pure-u-1 pure-u-md-1-2">
+      <h2 class="bandName title-smaller" id="bandName">Artist</h2>
+      <div class="bandPic">
+        <img src="#" alt="Image 1" id="bandPic">
+      </div>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2 events">
+      <h2 class="title-smaller">Upcoming Events</h2>
+      <div id="upcomingShows">
+      </div>
+    </div>
+  </div>
+
+  <div class="pure-g custom-row-small" style="visibility: hidden;" id="smallRow">
+    <div class="pure-u-1 pure-u-md-1-2"">
+      <h2 class="title-smaller">Top Songs</h2>
+      <div id="top-songs"></div>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2">
+      <h2 class="title-smaller">Top Albums</h2>
+      <div id="top-albums"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="./assets/js/script.js"></script>
+</body>
+
 </html>

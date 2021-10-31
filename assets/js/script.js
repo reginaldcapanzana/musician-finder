@@ -6,7 +6,10 @@ var topSongs = document.querySelector("#top-songs")
 var topAlbums = document.querySelector("#top-albums")
 var pastSearches = document.querySelector("#previous-searches");
 var pastButtons = [];
-var clearBtn = document.querySelector('#clearBtn')
+var clearBtn = document.querySelector('#clear-btn')
+var bigRow = document.querySelector("#bigRow")
+var smallRow = document.querySelector("#smallRow")
+var currVisible = false;
 
 //LastFm API info
 var lastFmRootURL = "http://ws.audioscrobbler.com/2.0/"
@@ -21,6 +24,9 @@ clearBtn.addEventListener("click", function() {
     localStorage.removeItem('previousBands');
     topSongs.innerHTML = ""
     topAlbums.innerHTML = ""
+    bigRow.setAttribute('style', 'visibility: hidden;')
+    smallRow.setAttribute('style', 'visibility: hidden;')
+    currVisible = false;
 })
 
 searchButton.addEventListener("click", handleFormSubmit)
@@ -32,7 +38,6 @@ function handleFormSubmit(event){
     }
     event.preventDefault();
     searchBands(searchVal);
-    // searchVal= ""
 }
 
 function searchBands(search){
@@ -41,7 +46,6 @@ function searchBands(search){
     upcomingShows.innerHTML = ""
     topSongs.innerHTML = ""
     topAlbums.innerHTML = ""
-    // var searchVal = document.querySelector('#search').value
 
     var requestUrl = "https://rest.bandsintown.com/artists/" + search + "?app_id=3cc6769e7ff614003f89926a784e3cd0"
     
@@ -50,7 +54,6 @@ function searchBands(search){
             return response.json()
         })
         .then(function (data) {
-            //console.log(data)
             if (Object.keys(data).length == 0) {
                 bandName.textContent = "Artist not found"
                 bandPic.setAttribute('src', "https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-404.png")
@@ -66,7 +69,6 @@ function searchBands(search){
                     return response.json()
                 })
                 .then(function (data) {
-                console.log(data)
                 if (Object.keys(data).length == 0) {
                         var noTourInfo = document.createElement('p')
                         noTourInfo.textContent = 'No upcoming shows!'
@@ -77,10 +79,14 @@ function searchBands(search){
                     for (var i = 0; i < data.length; i++) {
                         var tourInfo = document.createElement('p')
                         var tourDate = data[i].datetime.slice(0, 10)
-                        tourInfo.textContent = data[i].venue.location + " at " + data[i].venue.name + ". Date: " + tourDate + " "
+                        tourInfo.setAttribute('style', 'white-space: pre;')
+                        tourInfo.setAttribute('class', 'upcomingShows')
+                        tourInfo.textContent = data[i].venue.location + " at " + data[i].venue.name + "\r\n"
+                        tourInfo.textContent += "Date: " + tourDate + " "
                         
                         var ticketPlaceholder = document.createElement('a')
                         var linkText = document.createTextNode("Get tickets!")
+                        ticketPlaceholder.setAttribute('style', 'color: #dabea7;')
                         ticketPlaceholder.appendChild(linkText)
                         ticketPlaceholder.href = data[i].url
                         
@@ -92,14 +98,22 @@ function searchBands(search){
                 searchAndGenerateTopSongs(search)
                 searchAndGenerateTopAlbums(search)
                 addToButtonList(search)
+                if (currVisible === false) {
+                  setVisibility(bigRow);
+                  setVisibility(smallRow);
+                  currVisible = true;
+                }
             }
         })
     
     
 }
 
+function setVisibility(row) {
+  row.setAttribute("style", "visibility: visible;");
+}
+
 function searchAndGenerateTopSongs(artist){
-    // topSongs.innerHTML = ""
     //Grabs top 5 songs of the artist
     var topSongsURL = 
         lastFmRootURL + 
@@ -132,7 +146,6 @@ function searchAndGenerateTopSongs(artist){
 }
 
 function searchAndGenerateTopAlbums(artist){
-    // topAlbums.innerHTML = ""
     //Grabs top 5 albums of the artist
     var topAlbumsURL = 
         lastFmRootURL + 
@@ -154,7 +167,6 @@ function searchAndGenerateTopAlbums(artist){
                  return
              }
              else{
-                 console.log(data)
                 var albumData = data.topalbums.album
                 for(var i = 0; i < albumData.length; i++){   
                     var albumName = document.createElement('p')
@@ -194,7 +206,7 @@ function makeButtons() {
         newBtn.textContent = band;
         newBtn.setAttribute('type', 'button');
         newBtn.setAttribute("data-value", band);
-        newBtn.setAttribute('class', 'btnPast');
+        newBtn.setAttribute('class', 'pure-button custom-button btnPast');
         pastSearches.append(newBtn);
     }
 }        

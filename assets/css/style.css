@@ -1,58 +1,113 @@
 * {
     box-sizing: border-box;
   }
+
   img {
     border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
   }
-  h1.bandName{
-    font-size: 2.5em;
-    color:#a7c6da
 
+
+  h2{
+    font-size: larger;
+    color: #a7c6da;
+  }
+
+  .pure-g{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .custom-row{
+    height: 100%;
+    min-height: 450px;
+    width: auto;
+    background-color: rgb(15, 82, 87);
+  }
+
+  .custom-row-small{
+    height: 100%;
+    min-height: 150px;
+    width: auto;
+    background-color: rgb(15, 82, 87);
+  }
+
+  .custom-button{
+    background-color: #998575;
+    color: white;
+  }
+
+  .btnPast{
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  h2.bandName{
+    /* font-size: large; */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+    color: #a7c6da;
   }
   .title{
-    font-size: 3em;
-    margin-right: 20px;
-    color: #a7c6da
+    font-size: 50px;
   }
 
-  h2.title{
-    font-size: large;
+  .title-smaller{
+    font-size: 30px;
+  }
+
+  .title-list{
+    margin: 10px;
+    text-align: center;
+  }
+
+  h1.title{
+    margin-bottom: 0;
+  }
+
+  h2.title-smaller{
+    /* font-size: large; */
     margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   .jumbotron{
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     padding: 20px;
     color: #a7c6da;
   
   }
-  .artist-display{
-    padding-left: 20px;
-  }
+
   .events{
-    background-color: #2b4162;
-    position: absolute;
-    top: 175px;
-    right: 20px;
-    width: 700px;
-    height: 400px;
-    border: 3px solid black;
+    max-height: 450px;
     color: #0b3142;
-    overflow-y: scroll;
-    padding: 10px;
+    overflow-y: auto;
   }
-  /* Create three equal columns that floats next to each other */
-  .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px;
+
+  .artist-search-bar{
+    text-align: center;
+    vertical-align: middle;
   }
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
+
+  p {
+    color: #feefdd;
+  }
+  
+  p.upcomingShows{
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+
+  .bandPic{
+    justify-content: center;
+    align-content: center;
   }
