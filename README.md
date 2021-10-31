@@ -6,13 +6,13 @@ We built this application to act as a hub where music fans can look up their fav
 
 In the process of building this application, we learned a lot about how HTML, CSS, and Javascript can interact with each other and with third parties. We also learned how to a small group can best divide the work and share a github repository.
 
-Link to deployed application:
+Link to deployed application: [Deployed Application](https://reginaldcapanzana.github.io/musician-finder/)
 
 ## Usage
 
 The user can enter the name of a band or artist in the search bar and click the search button. This will populate the page with information about the artist and create a new button so they can easily search that artist again. There is also a clear button which removes all the information from the page.
 
-    ![Landing Page of Website](./assets/images/screenshot.png)
+![Landing Page of Website](./assets/images/screenshot.png)
 
 
 ## Credits
