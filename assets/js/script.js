@@ -69,7 +69,6 @@ function searchBands(search){
                     return response.json()
                 })
                 .then(function (data) {
-                console.log(data)
                 if (Object.keys(data).length == 0) {
                         var noTourInfo = document.createElement('p')
                         noTourInfo.textContent = 'No upcoming shows!'
@@ -115,7 +114,6 @@ function setVisibility(row) {
 }
 
 function searchAndGenerateTopSongs(artist){
-    // topSongs.innerHTML = ""
     //Grabs top 5 songs of the artist
     var topSongsURL = 
         lastFmRootURL + 
@@ -148,7 +146,6 @@ function searchAndGenerateTopSongs(artist){
 }
 
 function searchAndGenerateTopAlbums(artist){
-    // topAlbums.innerHTML = ""
     //Grabs top 5 albums of the artist
     var topAlbumsURL = 
         lastFmRootURL + 
@@ -170,7 +167,6 @@ function searchAndGenerateTopAlbums(artist){
                  return
              }
              else{
-                 console.log(data)
                 var albumData = data.topalbums.album
                 for(var i = 0; i < albumData.length; i++){   
                     var albumName = document.createElement('p')
