@@ -77,10 +77,14 @@ function searchBands(search){
                     for (var i = 0; i < data.length; i++) {
                         var tourInfo = document.createElement('p')
                         var tourDate = data[i].datetime.slice(0, 10)
-                        tourInfo.textContent = data[i].venue.location + " at " + data[i].venue.name + ". Date: " + tourDate + " "
+                        tourInfo.setAttribute('style', 'white-space: pre;')
+                        tourInfo.setAttribute('class', 'upcomingShows')
+                        tourInfo.textContent = data[i].venue.location + " at " + data[i].venue.name + "\r\n"
+                        tourInfo.textContent += "Date: " + tourDate + " "
                         
                         var ticketPlaceholder = document.createElement('a')
                         var linkText = document.createTextNode("Get tickets!")
+                        ticketPlaceholder.setAttribute('style', 'color: #dabea7;')
                         ticketPlaceholder.appendChild(linkText)
                         ticketPlaceholder.href = data[i].url
                         
@@ -194,7 +198,7 @@ function makeButtons() {
         newBtn.textContent = band;
         newBtn.setAttribute('type', 'button');
         newBtn.setAttribute("data-value", band);
-        newBtn.setAttribute('class', 'btnPast');
+        newBtn.setAttribute('class', 'pure-button custom-button btnPast');
         pastSearches.append(newBtn);
     }
 }        

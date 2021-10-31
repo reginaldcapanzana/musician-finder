@@ -3,6 +3,33 @@
   }
   img {
     border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .pure-g{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .custom-row{
+    height: 100%;
+    min-height: 450px;
+    width: auto;
+  }
+
+  .custom-button{
+    background-color: #998575;
+    color: white;
+  }
+
+  .btnPast{
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
   }
 
   h2.bandName{
@@ -14,13 +41,17 @@
   }
   .title{
     font-size: 50px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     color: #a7c6da
   }
 
   .title-list{
     margin: 10px;
     text-align: center;
+  }
+
+  h1.title{
+    margin-bottom: 0;
   }
 
   h2.title{
@@ -37,20 +68,18 @@
     color: #a7c6da;
   
   }
-  .artist-display{
-    padding-left: 20px;
-  }
+
   .events{
-    background-color: #a7c6da;
-    position: absolute;
-    top: 175px;
+    /* background-color: #2b4162; */
+    /* top: 175px;
     right: 20px;
     width: 700px;
-    height: 400px;
-    border: 3px solid black;
+    height: 400px; */
+    max-height: 450px;
+    /* border: 3px solid black; */
     color: #0b3142;
     overflow-y: scroll;
-    padding: 10px;
+    /* padding: 10px; */
   }
   /* Create three equal columns that floats next to each other */
   .column {
@@ -73,4 +102,15 @@
 
   p {
     color: #feefdd;
+  }
+  
+  p.upcomingShows{
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+
+  .bandPic{
+    justify-content: center;
+    align-content: center;
   }

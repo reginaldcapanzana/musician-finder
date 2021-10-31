@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--link href="font link here" rel="stylesheet"-->
+  <link rel="stylesheet" href="./assets/css/reset.css" />
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" />
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
-  <link rel="stylesheet" href="./assets/css/reset.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Musican Finder</title>
   <!--link googlse fonts here-->
@@ -40,8 +40,8 @@
             <form class="pure-form">
               <fieldset>
                 <input type="text" placeholder="Find an artist" id="search" />
-                <button id="search-btn" class="pure-button pure-button-primary">Search</button>
-                <button id="clear-btn" class="pure-button pure-button-primary">Clear</button>
+                <button id="search-btn" class="pure-button custom-button">Search</button>
+                <button id="clear-btn" class="pure-button custom-button">Clear</button>
               </fieldset>
             </form>
           </li>
@@ -57,33 +57,20 @@
   </header>
 
   <!-- Use purecss rows and columns to make the site responsive -->
-  <div class="pure-g artist-display" style="background-color: rgb(15, 82, 87);">
+  <div class="pure-g custom-row" style="background-color: rgb(15, 82, 87);">
     <div class="pure-u-1 pure-u-md-1-2">
-      <h2 class="bandName" id="bandName"></h2>
-      <div class="imagine">
-        <!-- <a href="http://via.placeholder.com/900x500/2ecc71/ffffff/&amp;text=Image+1" title="View Larger Image" class="block green bandPic"> -->
-        <img src="https://designshack.net/wp-content/uploads/placeholder-image.png" alt="Image 1"
-          style="width:400px; height: 400px" id="bandPic">
-        <!-- </a> -->
+      <h2 class="bandName" id="bandName">Artist</h2>
+      <div class="bandPic">
+        <img src="https://designshack.net/wp-content/uploads/placeholder-image.png" alt="Image 1" id="bandPic">
       </div>
     </div>
-    <div class="pure-u-1 pure-u-md-1-2">
+    <div class="pure-u-1 pure-u-md-1-2 events">
       <h2 class="title">Upcoming Events</h2>
       <div id="upcomingShows">
-        <p>Testing...</p>
       </div>
     </div>
   </div>
 
-  <br>
-  <!--add image section-->
-
-  <br><br>
-  <!--Upcomiong Events-->
-  <!-- <div class="events">
-    <h2>Upcoming Events</h2>
-    <div id=upcomingShows></div>
-  </div> -->
 
 
   <!--Top songs row for songs, lyrics, and guitartabs-->
