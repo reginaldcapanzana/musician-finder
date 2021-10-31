@@ -12,7 +12,7 @@ Link to deployed application:
 
 The user can enter the name of a band or artist in the search bar and click the search button. This will populate the page with information about the artist and create a new button so they can easily search that artist again. There is also a clear button which removes all the information from the page.
 
-    ![alt text](assets/images/screenshot.png)
+    ![Landing Page of Website](./assets/images/screenshot.png)
 
 
 ## Credits
