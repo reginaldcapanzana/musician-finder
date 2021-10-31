@@ -7,6 +7,9 @@ var topAlbums = document.querySelector("#top-albums")
 var pastSearches = document.querySelector("#previous-searches");
 var pastButtons = [];
 var clearBtn = document.querySelector('#clear-btn')
+var bigRow = document.querySelector("#bigRow")
+var smallRow = document.querySelector("#smallRow")
+var currVisible = false;
 
 //LastFm API info
 var lastFmRootURL = "http://ws.audioscrobbler.com/2.0/"
@@ -21,6 +24,9 @@ clearBtn.addEventListener("click", function() {
     localStorage.removeItem('previousBands');
     topSongs.innerHTML = ""
     topAlbums.innerHTML = ""
+    bigRow.setAttribute('style', 'visibility: hidden;')
+    smallRow.setAttribute('style', 'visibility: hidden;')
+    currVisible = false;
 })
 
 searchButton.addEventListener("click", handleFormSubmit)
@@ -32,7 +38,6 @@ function handleFormSubmit(event){
     }
     event.preventDefault();
     searchBands(searchVal);
-    // searchVal= ""
 }
 
 function searchBands(search){
@@ -41,7 +46,6 @@ function searchBands(search){
     upcomingShows.innerHTML = ""
     topSongs.innerHTML = ""
     topAlbums.innerHTML = ""
-    // var searchVal = document.querySelector('#search').value
 
     var requestUrl = "https://rest.bandsintown.com/artists/" + search + "?app_id=3cc6769e7ff614003f89926a784e3cd0"
     
@@ -50,7 +54,6 @@ function searchBands(search){
             return response.json()
         })
         .then(function (data) {
-            //console.log(data)
             if (Object.keys(data).length == 0) {
                 bandName.textContent = "Artist not found"
                 bandPic.setAttribute('src', "https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-404.png")
@@ -96,10 +99,19 @@ function searchBands(search){
                 searchAndGenerateTopSongs(search)
                 searchAndGenerateTopAlbums(search)
                 addToButtonList(search)
+                if (currVisible === false) {
+                  setVisibility(bigRow);
+                  setVisibility(smallRow);
+                  currVisible = true;
+                }
             }
         })
     
     
+}
+
+function setVisibility(row) {
+  row.setAttribute("style", "visibility: visible;");
 }
 
 function searchAndGenerateTopSongs(artist){

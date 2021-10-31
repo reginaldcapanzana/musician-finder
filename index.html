@@ -6,13 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--link href="font link here" rel="stylesheet"-->
   <link rel="stylesheet" href="./assets/css/reset.css" />
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" />
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Musican Finder</title>
-  <!--link googlse fonts here-->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans&display=swap');
 
@@ -56,12 +54,11 @@
     </div>
   </header>
 
-  <!-- Use purecss rows and columns to make the site responsive -->
-  <div class="pure-g custom-row" style="background-color: rgb(15, 82, 87);">
+  <div class="pure-g custom-row" style="visibility: hidden;" id="bigRow">
     <div class="pure-u-1 pure-u-md-1-2">
       <h2 class="bandName" id="bandName">Artist</h2>
       <div class="bandPic">
-        <img src="https://designshack.net/wp-content/uploads/placeholder-image.png" alt="Image 1" id="bandPic">
+        <img src="#" alt="Image 1" id="bandPic">
       </div>
     </div>
     <div class="pure-u-1 pure-u-md-1-2 events">
@@ -71,19 +68,17 @@
     </div>
   </div>
 
-
-
-  <!--Top songs row for songs, lyrics, and guitartabs-->
-  <div class="row">
-    <div class="column" style="background-color: rgb(15, 82, 87);">
+  <div class="pure-g custom-row-small" style="visibility: hidden;" id="smallRow">
+    <div class="pure-u-1 pure-u-md-1-2"">
       <h2 class="title">Top Songs</h2>
       <div id="top-songs"></div>
     </div>
-    <div class="column" style="background-color:rgb(15, 82, 87);">
+    <div class="pure-u-1 pure-u-md-1-2">
       <h2 class="title">Top Albums</h2>
       <div id="top-albums"></div>
     </div>
   </div>
+
   <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 

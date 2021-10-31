@@ -13,12 +13,21 @@
   .pure-g{
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
   }
 
   .custom-row{
     height: 100%;
     min-height: 450px;
     width: auto;
+    background-color: rgb(15, 82, 87);
+  }
+
+  .custom-row-small{
+    height: 100%;
+    min-height: 130px;
+    width: auto;
+    background-color: rgb(15, 82, 87);
   }
 
   .custom-button{
@@ -41,7 +50,6 @@
   }
   .title{
     font-size: 50px;
-    /* margin-right: 20px; */
     color: #a7c6da
   }
 
@@ -62,7 +70,6 @@
 
   .jumbotron{
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     padding: 20px;
     color: #a7c6da;
@@ -70,29 +77,9 @@
   }
 
   .events{
-    /* background-color: #2b4162; */
-    /* top: 175px;
-    right: 20px;
-    width: 700px;
-    height: 400px; */
     max-height: 450px;
-    /* border: 3px solid black; */
     color: #0b3142;
-    overflow-y: scroll;
-    /* padding: 10px; */
-  }
-  /* Create three equal columns that floats next to each other */
-  .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px;
-  }
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
+    overflow-y: auto;
   }
 
   .artist-search-bar{
