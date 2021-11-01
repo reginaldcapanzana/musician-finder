@@ -12,7 +12,7 @@ var smallRow = document.querySelector("#smallRow")
 var currVisible = false;
 
 //LastFm API info
-var lastFmRootURL = "http://ws.audioscrobbler.com/2.0/"
+var lastFmRootURL = "https://ws.audioscrobbler.com/2.0/"
 var lastFmAPIKey = "&api_key=6afc7c7f27dfe14e777df51baef17e8f&format=json"
 
 clearBtn.addEventListener("click", function() {
